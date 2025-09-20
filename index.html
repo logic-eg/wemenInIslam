@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Section</title>
+    <title>Woman in Islam - Unveil The Truth</title>
+    <meta name="description" content="Discover the truth about women in Islam with Dr. Sherif Abdel Azeem's comprehensive book covering marriage rights, economic independence, and social participation.">
     <style>
+        /* CSS Variables - Design System */
+        :root {
+            --background: hsl(45, 20%, 96%);
+            --foreground: hsl(20, 14%, 20%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(20, 14%, 20%);
+            --primary: hsl(15, 55%, 45%);
+            --primary-foreground: hsl(45, 20%, 96%);
+            --secondary: hsl(45, 15%, 90%);
+            --secondary-foreground: hsl(20, 14%, 20%);
+            --muted: hsl(45, 15%, 88%);
+            --muted-foreground: hsl(20, 8%, 55%);
+            --accent: hsl(15, 40%, 35%);
+            --accent-foreground: hsl(45, 20%, 96%);
+            --border: hsl(45, 10%, 85%);
+            --input: hsl(45, 10%, 85%);
+            --ring: hsl(15, 55%, 45%);
+            --radius: 0.5rem;
+        }
+
+        .dark {
+            --background: hsl(20, 25%, 8%);
+            --foreground: hsl(45, 20%, 92%);
+            --card: hsl(20, 20%, 12%);
+            --card-foreground: hsl(45, 20%, 92%);
+            --primary: hsl(15, 60%, 55%);
+            --primary-foreground: hsl(20, 25%, 8%);
+            --secondary: hsl(20, 15%, 18%);
+            --secondary-foreground: hsl(45, 20%, 92%);
+            --muted: hsl(20, 12%, 22%);
+            --muted-foreground: hsl(45, 8%, 65%);
+            --accent: hsl(15, 45%, 40%);
+            --accent-foreground: hsl(45, 20%, 92%);
+            --border: hsl(20, 15%, 25%);
+            --input: hsl(20, 15%, 25%);
+            --ring: hsl(15, 60%, 55%);
+        }
+
+        /* Base Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,13 +54,9 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             line-height: 1.6;
-            color: #0f172a;
-            background-color: #ffffff;
-        }
-
-        .section {
-            padding: 5rem 0;
-            background-color: #ffffff;
+            color: var(--foreground);
+            background-color: var(--background);
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -29,28 +65,443 @@
             padding: 0 1rem;
         }
 
-        .max-w-4xl {
-            max-width: 56rem;
-            margin: 0 auto;
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .text-center {
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-button {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .dropdown-button:hover {
+            color: var(--primary);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            width: 12rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .dropdown.active .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--foreground);
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--muted);
+            color: var(--primary);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .icon-button:hover {
+            color: var(--primary);
+        }
+
+        .separator {
+            width: 1px;
+            height: 1.5rem;
+            background-color: var(--border);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-primary:hover {
+            background-color: hsl(15, 55%, 40%);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--foreground);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--muted);
+            color: var(--primary);
+        }
+
+        /* Panel Styles */
+        .panel {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 40;
+        }
+
+        .panel.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .panel-content {
+            padding: 1.5rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 5rem;
+            left: 2rem;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 10rem;
+            right: 5rem;
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-text {
             text-align: center;
         }
 
-        .mb-12 {
-            margin-bottom: 3rem;
+        @media (min-width: 1024px) {
+            .hero-text {
+                text-align: left;
+            }
         }
 
-        .main-title {
-            font-size: 2.25rem;
+        .hero-title {
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--foreground);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.75rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
             margin-bottom: 1rem;
         }
 
         @media (min-width: 768px) {
-            .main-title {
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        .hero-author {
+            font-size: 1rem;
+            color: var(--muted-foreground);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+        }
+
+        .book-cover {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (min-width: 1024px) {
+            .book-cover {
+                justify-content: flex-end;
+            }
+        }
+
+        .book {
+            position: relative;
+            width: 20rem;
+            height: 24rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+        }
+
+        .book-icon {
+            width: 4rem;
+            height: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .book-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .book-subtitle {
+            font-size: 0.875rem;
+            text-align: center;
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+        }
+
+        .book-author {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* Questions Section */
+        .questions {
+            padding: 5rem 0;
+            background: rgba(var(--muted), 0.3);
+        }
+
+        .questions-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .questions-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .questions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .questions-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .question-item {
+            text-align: center;
+        }
+
+        .question-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .question-title.emphasis {
+            color: var(--primary);
+        }
+
+        .question-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+
+        /* Index Section */
+        .index-section {
+            padding: 5rem 0;
+            background: var(--background);
+        }
+
+        .index-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--foreground);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .index-title {
                 font-size: 3rem;
             }
         }
@@ -58,18 +509,20 @@
         .title-underline {
             width: 6rem;
             height: 2px;
-            background-color: #8b4513;
-            margin: 0 auto;
+            background-color: var(--primary);
+            margin: 0 auto 3rem;
         }
 
-        .grid {
+        .index-grid {
             display: grid;
             gap: 3rem;
             align-items: start;
+            max-width: 56rem;
+            margin: 0 auto;
         }
 
         @media (min-width: 768px) {
-            .grid {
+            .index-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -77,7 +530,7 @@
         .section-title {
             font-size: 1.875rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--foreground);
             margin-bottom: 2rem;
         }
 
@@ -92,19 +545,20 @@
             align-items: center;
             gap: 1rem;
             padding: 0.75rem;
-            border-radius: 0.5rem;
+            border-radius: var(--radius);
             transition: background-color 0.2s;
+            cursor: pointer;
         }
 
         .chapter-item:hover {
-            background-color: #f8fafc;
+            background-color: var(--muted);
         }
 
         .chapter-number {
             width: 2rem;
             height: 2rem;
-            background-color: #8b4513;
-            color: #ffffff;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -114,34 +568,19 @@
         }
 
         .chapter-title {
-            color: #0f172a;
+            color: var(--foreground);
         }
 
         .beyond-veil-content {
-            color: #64748b;
+            color: var(--muted-foreground);
             margin-bottom: 1.5rem;
             line-height: 1.7;
-        }
-
-        .btn-primary {
-            background-color: #8b4513;
-            color: #ffffff;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: #7a3d0f;
         }
 
         .topics-section {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border);
         }
 
         .topics-header {
@@ -159,20 +598,20 @@
 
         .topics-header:hover .topics-title,
         .topics-header:hover .chevron-icon {
-            color: #8b4513;
+            color: var(--primary);
         }
 
         .topics-title {
             font-size: 1.125rem;
             font-weight: 600;
-            color: #0f172a;
+            color: var(--foreground);
             transition: color 0.2s;
         }
 
         .chevron-icon {
             width: 1.25rem;
             height: 1.25rem;
-            color: #0f172a;
+            color: var(--foreground);
             transition: all 0.3s;
         }
 
@@ -194,8 +633,8 @@
         }
 
         .topics-panel {
-            background-color: #f8fafc;
-            border-radius: 0.5rem;
+            background-color: var(--muted);
+            border-radius: var(--radius);
             padding: 1rem;
         }
 
@@ -215,43 +654,834 @@
         .topic-bullet {
             width: 0.5rem;
             height: 0.5rem;
-            background-color: #8b4513;
+            background-color: var(--primary);
             border-radius: 50%;
             flex-shrink: 0;
         }
 
         .topic-text {
-            color: #0f172a;
+            color: var(--foreground);
             font-size: 0.875rem;
         }
 
+        /* Audio Book Section */
+        .audiobook {
+            padding: 5rem 0;
+            background: rgba(var(--muted), 0.2);
+        }
+
+        .audiobook-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .audiobook-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .audio-player {
+            max-width: 32rem;
+            margin: 0 auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .control-button {
+            background: none;
+            border: none;
+            color: var(--muted-foreground);
+            cursor: pointer;
+            transition: color 0.2s;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-button:hover {
+            color: var(--foreground);
+        }
+
+        .play-button {
+            width: 4rem;
+            height: 4rem;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .play-button:hover {
+            background: hsl(15, 55%, 40%);
+        }
+
+        .progress-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            background: var(--muted);
+            height: 0.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--primary);
+            height: 100%;
+            width: 33%;
+            border-radius: 0.25rem;
+        }
+
+        .progress-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .volume-bar {
+            background: var(--muted);
+            height: 0.25rem;
+            border-radius: 0.125rem;
+            width: 6rem;
+            overflow: hidden;
+        }
+
+        .volume-fill {
+            background: var(--primary);
+            height: 100%;
+            width: 66%;
+            border-radius: 0.125rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--background);
+        }
+
+        .testimonials-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(var(--primary), 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--primary);
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.125rem;
+        }
+
+        .star {
+            font-size: 1.125rem;
+            color: #fbbf24;
+        }
+
+        .star.empty {
+            color: var(--muted-foreground);
+        }
+
+        .testimonial-text {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .powered-by {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--muted-foreground);
+        }
+
+        .powered-by .brand {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Author Section */
+        .author {
+            padding: 5rem 0;
+            background: rgba(var(--muted), 0.2);
+        }
+
+        .author-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .author-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .author-info .label {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .author-name {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .author-name {
+                font-size: 2.25rem;
+            }
+        }
+
+        .author-bio {
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .author-photo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .author-image {
+            position: relative;
+            width: 20rem;
+            height: 20rem;
+            background: linear-gradient(135deg, rgba(var(--primary), 0.2), rgba(var(--accent), 0.2));
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .author-placeholder {
+            width: 100%;
+            height: 100%;
+            background: rgba(var(--muted), 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .author-initials {
+            width: 6rem;
+            height: 6rem;
+            background: rgba(var(--primary), 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Question Section */
+        .question-form {
+            padding: 5rem 0;
+            background: var(--background);
+        }
+
+        .question-form-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: start;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .question-form-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--background);
+            color: var(--foreground);
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(var(--primary), 0.1);
+        }
+
+        .form-textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        .question-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 28rem;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(var(--primary), 0.1), rgba(var(--accent), 0.1));
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .placeholder-content {
+            width: 100%;
+            height: 100%;
+            background: rgba(var(--muted), 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .placeholder-icon {
+            width: 4rem;
+            height: 4rem;
+            background: rgba(var(--primary), 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-text {
+            color: var(--muted-foreground);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand {
+            text-align: center;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .brand-icon {
+            width: 2rem;
+            height: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .brand-tagline {
+            font-size: 0.875rem;
+            opacity: 0.75;
+        }
+
+        .footer-right {
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .footer-right {
+                text-align: right;
+            }
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            opacity: 0.75;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 767px) {
-            .section {
+            .index-section {
                 padding: 3rem 0;
             }
             
-            .main-title {
+            .index-title {
                 font-size: 1.875rem;
             }
             
-            .grid {
+            .index-grid {
                 gap: 2rem;
             }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <section class="section">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <div class="max-w-4xl">
-                <div class="text-center mb-12">
-                    <h2 class="main-title">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">Woman in Islam</div>
+                
+                <!-- Navigation -->
+                <nav class="nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    
+                    <!-- Questions Dropdown -->
+                    <div class="dropdown" id="questionsDropdown">
+                        <button class="dropdown-button" onclick="toggleDropdown('questions')">
+                            <span>Questions</span>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#questions" class="dropdown-item">Common Questions</a>
+                            <a href="#questions" class="dropdown-item">Religious Questions</a>
+                            <a href="#questions" class="dropdown-item">Social Questions</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Index Dropdown -->
+                    <div class="dropdown" id="indexDropdown">
+                        <button class="dropdown-button" onclick="toggleDropdown('index')">
+                            <span>Index</span>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#index" class="dropdown-item">Table of Contents</a>
+                            <a href="#index" class="dropdown-item">Chapter Overview</a>
+                            <a href="#index" class="dropdown-item">Key Topics</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#audiobook" class="nav-link">Audio Book</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                    
+                    <!-- Author Dropdown -->
+                    <div class="dropdown" id="authorDropdown">
+                        <button class="dropdown-button" onclick="toggleDropdown('author')">
+                            <span>Author</span>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#author" class="dropdown-item">Biography</a>
+                            <a href="#author" class="dropdown-item">Other Works</a>
+                            <a href="#author" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Header Controls -->
+                <div class="header-controls">
+                    <!-- Search Button -->
+                    <button class="icon-button" onclick="toggleSearch()" aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    
+                    <div class="separator"></div>
+                    
+                    <!-- Bookmark Button -->
+                    <button class="icon-button" onclick="toggleBookmarks()" aria-label="Bookmarks">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                        </svg>
+                    </button>
+                    
+                    <div class="separator"></div>
+                    
+                    <!-- Language Dropdown -->
+                    <div class="dropdown" id="languageDropdown">
+                        <button class="dropdown-button" onclick="toggleDropdown('language')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <button class="dropdown-item" onclick="setLanguage('en')">English</button>
+                            <button class="dropdown-item" onclick="setLanguage('ar')">العربية</button>
+                            <button class="dropdown-item" onclick="setLanguage('fr')">Français</button>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    
+                    <!-- CTA Button -->
+                    <a href="#" class="btn-primary">Buy Now</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-button" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search Panel -->
+        <div class="panel" id="searchPanel">
+            <div class="container">
+                <div class="panel-content">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600;">Search</h3>
+                        <button onclick="closePanel('search')" style="background: none; border: none; color: var(--foreground); cursor: pointer;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div style="position: relative;">
+                        <input type="text" placeholder="Search through the book content..." 
+                               style="width: 100%; padding: 0.75rem 3rem 0.75rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); color: var(--foreground);">
+                        <svg style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted-foreground);" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bookmarks Panel -->
+        <div class="panel" id="bookmarksPanel">
+            <div class="container">
+                <div class="panel-content">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600;">Bookmarks</h3>
+                        <button onclick="closePanel('bookmarks')" style="background: none; border: none; color: var(--foreground); cursor: pointer;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--muted)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <h4 style="font-weight: 500; margin-bottom: 0.25rem;">Chapter 1: Introduction</h4>
+                            <p style="font-size: 0.875rem; color: var(--muted-foreground);">Page 15</p>
+                        </div>
+                        <div style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--muted)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <h4 style="font-weight: 500; margin-bottom: 0.25rem;">Women's Rights in Islam</h4>
+                            <p style="font-size: 0.875rem; color: var(--muted-foreground);">Page 42</p>
+                        </div>
+                        <div style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--muted)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <h4 style="font-weight: 500; margin-bottom: 0.25rem;">Historical Context</h4>
+                            <p style="font-size: 0.875rem; color: var(--muted-foreground);">Page 78</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Left Content -->
+                <div class="hero-text">
+                    <h1 class="hero-title">UNVEIL THE TRUTH</h1>
+                    <p class="hero-subtitle">
+                        This book is all women - she should understand and the rest of us should understand her
+                    </p>
+                    <p class="hero-author">
+                        <em>by Sharif Abdel Azeem</em>
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#" class="btn-primary" style="padding: 0.75rem 2rem;">Buy E-book</a>
+                        <a href="#audiobook" class="btn-outline" style="padding: 0.75rem 2rem;">Audio Book</a>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Book Cover -->
+                <div class="book-cover">
+                    <div class="book">
+                        <div class="book-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                                      fill="currentColor" style="color: var(--muted-foreground);"/>
+                            </svg>
+                        </div>
+                        <h2 class="book-title">
+                            WOMAN<br />IN ISLAM
+                        </h2>
+                        <p class="book-subtitle">
+                            Discover the truth about women in Islam
+                        </p>
+                        <div class="book-author">
+                            By Sherif Abdel Azeem
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions Section -->
+    <section id="questions" class="questions">
+        <div class="container">
+            <h2 class="questions-title">
+                Controversial Questions Need Answers
+            </h2>
+            
+            <div class="questions-grid">
+                <div class="question-item">
+                    <h3 class="question-title">Adultery</h3>
+                    <p class="question-description">punishment or crime or justice?</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Jewish Inheritance</h3>
+                    <p class="question-description">what are they getting?</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Islam women</h3>
+                    <p class="question-description">Owned Or Equal?</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Divorce</h3>
+                    <p class="question-description">divorced without losing our familyfriend or children to a former house</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Adam And Eve</h3>
+                    <p class="question-description">what is divine?</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Polygamy</h3>
+                    <p class="question-description">sharing wife with woman</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Hijab & Modesty</h3>
+                    <p class="question-description">is this or good news or bad?</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title">Mothers & Wives</h3>
+                    <p class="question-description">from dividing</p>
+                </div>
+                <div class="question-item">
+                    <h3 class="question-title emphasis">Daughters</h3>
+                    <p class="question-description">are from our loved?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Index Section -->
+    <section id="index" class="index-section">
+        <div class="container">
+            <div style="max-width: 56rem; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="index-title">
                         Let's Start The Journey
                     </h2>
                     <div class="title-underline"></div>
                 </div>
                 
-                <div class="grid">
+                <div class="index-grid">
                     <!-- Index -->
                     <div>
                         <h3 class="section-title">Index</h3>
@@ -336,9 +1566,327 @@
         </div>
     </section>
 
-    <script>
-        let isTopicsExpanded = false;
+    <!-- Audio Book Section -->
+    <section id="audiobook" class="audiobook">
+        <div class="container">
+            <h2 class="audiobook-title">
+                Available As Audio Book
+            </h2>
+            
+            <!-- Audio Player UI -->
+            <div class="audio-player">
+                <!-- Controls -->
+                <div class="audio-controls">
+                    <button class="control-button" aria-label="Previous">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="19,20 9,12 19,4"></polygon>
+                            <line x1="5" y1="19" x2="5" y2="5"></line>
+                        </svg>
+                    </button>
+                    
+                    <button class="play-button" onclick="togglePlay()" aria-label="Play">
+                        <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,3 19,12 5,21"></polygon>
+                        </svg>
+                    </button>
+                    
+                    <button class="control-button" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,4 15,12 5,20"></polygon>
+                            <line x1="19" y1="5" x2="19" y2="19"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-time">
+                        <span>2:34</span>
+                        <span>8:45</span>
+                    </div>
+                </div>
+                
+                <!-- Volume -->
+                <div class="volume-control">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--muted-foreground);">
+                        <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    <div class="volume-bar">
+                        <div class="volume-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="testimonials-title">
+                What The Readers Say
+            </h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rida</h4>
+                            <div class="testimonial-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        The simplicity of this book and this subject was of comfort to me after needing and understanding on the religion and truth on this hard faith is in Islam in all its true nature but I don't know all aspects on this faith as I wanted at this time to the book about Women indeed that all the subject has so much information in it that I was able I needed and recommend to everyone
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Preety</h4>
+                            <div class="testimonial-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        The information from 'Women' show was authentic and I am happy that I read it and this read about some and that I was able to get all time information I am all of every, but to be, that I am so much much about Women and can write about on our lives, and and can note and write about with can.
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Ranada</h4>
+                            <div class="testimonial-stars">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        I read a lot of great book about Muslims but this about women is great as well so as all muslim about as we can and should to as I am as Muslim women and also as much about women.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="powered-by">
+                <span>Powered by</span>
+                <span class="brand">reviews</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section id="author" class="author">
+        <div class="container">
+            <div class="author-content">
+                <!-- Author Info -->
+                <div class="author-info">
+                    <div style="margin-bottom: 1.5rem;">
+                        <span class="label">Meet the Author</span>
+                        <h2 class="author-name">
+                            Dr. Sherif Abdel Azeem
+                        </h2>
+                    </div>
+                    
+                    <p class="author-bio">
+                        Dr. Sherif Abdel Azeem is an Egyptian scholar who has dedicated his life to Islamic studies and comparative religion. With a PhD in Islamic Studies, he has authored several books that bridge the gap between Islamic teachings and contemporary understanding. His work focuses on clarifying misconceptions about Islam, particularly regarding women's rights and roles in Islamic society.
+                    </p>
+                    
+                    <p class="author-bio">
+                        Through his research and writings, Dr. Azeem has become a respected voice in Islamic scholarship, helping readers worldwide gain a deeper and more accurate understanding of Islamic principles and their practical applications in modern life.
+                    </p>
+                    
+                    <a href="#" class="btn-primary">Learn More</a>
+                </div>
+                
+                <!-- Author Photo -->
+                <div class="author-photo">
+                    <div class="author-image">
+                        <div class="author-placeholder">
+                            <div class="author-initials">DA</div>
+                            <p style="color: var(--muted-foreground);">Dr. Sherif Abdel Azeem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Question Section -->
+    <section class="question-form">
+        <div class="container">
+            <div class="question-form-content">
+                <!-- Question Form -->
+                <div>
+                    <h2 class="form-title">
+                        Have A Question!
+                    </h2>
+                    
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Full Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%; padding: 0.75rem 2rem;">
+                            Send
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Image -->
+                <div class="question-image">
+                    <div class="image-placeholder">
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon">📚</div>
+                            <p class="placeholder-text">Question Image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Contact Us -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@womaninislam.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                
+                <!-- Logo/Brand -->
+                <div class="footer-section footer-brand">
+                    <div class="brand-logo">
+                        <div class="brand-icon">WI</div>
+                        <span class="brand-name">WOMAN IN ISLAM</span>
+                    </div>
+                    <p class="brand-tagline">Unveil The Truth</p>
+                </div>
+                
+                <!-- Follow Us -->
+                <div class="footer-section footer-right">
+                    <h3>Follow Us</h3>
+                    <p>Facebook</p>
+                    <p>Twitter</p>
+                    <p>Instagram</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Woman In Islam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global state
+        let activeDropdown = null;
+        let isSearchOpen = false;
+        let isBookmarksOpen = false;
+        let isTopicsExpanded = false;
+        let isPlaying = false;
+
+        // Dropdown functionality
+        function toggleDropdown(dropdownName) {
+            const dropdown = document.getElementById(dropdownName + 'Dropdown');
+            const isCurrentlyActive = dropdown.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            
+            // If it wasn't active, open it
+            if (!isCurrentlyActive) {
+                dropdown.classList.add('active');
+                activeDropdown = dropdownName;
+            } else {
+                activeDropdown = null;
+            }
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const searchPanel = document.getElementById('searchPanel');
+            const bookmarksPanel = document.getElementById('bookmarksPanel');
+            
+            isSearchOpen = !isSearchOpen;
+            isBookmarksOpen = false;
+            
+            if (isSearchOpen) {
+                searchPanel.classList.add('active');
+                bookmarksPanel.classList.remove('active');
+            } else {
+                searchPanel.classList.remove('active');
+            }
+        }
+
+        // Bookmarks functionality
+        function toggleBookmarks() {
+            const searchPanel = document.getElementById('searchPanel');
+            const bookmarksPanel = document.getElementById('bookmarksPanel');
+            
+            isBookmarksOpen = !isBookmarksOpen;
+            isSearchOpen = false;
+            
+            if (isBookmarksOpen) {
+                bookmarksPanel.classList.add('active');
+                searchPanel.classList.remove('active');
+            } else {
+                bookmarksPanel.classList.remove('active');
+            }
+        }
+
+        // Close panel functionality
+        function closePanel(panelType) {
+            if (panelType === 'search') {
+                document.getElementById('searchPanel').classList.remove('active');
+                isSearchOpen = false;
+            } else if (panelType === 'bookmarks') {
+                document.getElementById('bookmarksPanel').classList.remove('active');
+                isBookmarksOpen = false;
+            }
+        }
+
+        // Language functionality
+        function setLanguage(lang) {
+            console.log('Language set to:', lang);
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('active');
+            activeDropdown = null;
+        }
+
+        // Topics toggle functionality
         function toggleTopics() {
             isTopicsExpanded = !isTopicsExpanded;
             const topicsContent = document.getElementById('topicsContent');
@@ -352,6 +1900,66 @@
                 chevron.classList.remove('rotated');
             }
         }
+
+        // Audio player functionality
+        function togglePlay() {
+            const playIcon = document.getElementById('playIcon');
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+            } else {
+                playIcon.innerHTML = '<polygon points="5,3 19,12 5,21"></polygon>';
+            }
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Thank you for your question! We will get back to you soon.');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                activeDropdown = null;
+            }
+            
+            if (!event.target.closest('.panel') && !event.target.closest('.icon-button')) {
+                document.getElementById('searchPanel').classList.remove('active');
+                document.getElementById('bookmarksPanel').classList.remove('active');
+                isSearchOpen = false;
+                isBookmarksOpen = false;
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                // Close all open panels and dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                document.getElementById('searchPanel').classList.remove('active');
+                document.getElementById('bookmarksPanel').classList.remove('active');
+                activeDropdown = null;
+                isSearchOpen = false;
+                isBookmarksOpen = false;
+            }
+        });
     </script>
 </body>
 </html>
