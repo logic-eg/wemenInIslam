@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Section</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #0f172a;
+            background-color: #ffffff;
+        }
+
+        .section {
+            padding: 5rem 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .max-w-4xl {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+        }
+
+        .title-underline {
+            width: 6rem;
+            height: 2px;
+            background-color: #8b4513;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chapter-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .chapter-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .chapter-number {
+            width: 2rem;
+            height: 2rem;
+            background-color: #8b4513;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .chapter-title {
+            color: #0f172a;
+        }
+
+        .beyond-veil-content {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .btn-primary {
+            background-color: #8b4513;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #7a3d0f;
+        }
+
+        .topics-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .topics-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.2s;
+        }
+
+        .topics-header:hover .topics-title,
+        .topics-header:hover .chevron-icon {
+            color: #8b4513;
+        }
+
+        .topics-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #0f172a;
+            transition: color 0.2s;
+        }
+
+        .chevron-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #0f172a;
+            transition: all 0.3s;
+        }
+
+        .chevron-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .topics-content {
+            overflow: hidden;
+            transition: all 0.3s;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .topics-content.expanded {
+            max-height: 24rem;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        .topics-panel {
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .topics-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .topic-bullet {
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #8b4513;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .topic-text {
+            color: #0f172a;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 767px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .main-title {
+                font-size: 1.875rem;
+            }
+            
+            .grid {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="max-w-4xl">
+                <div class="text-center mb-12">
+                    <h2 class="main-title">
+                        Let's Start The Journey
+                    </h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="grid">
+                    <!-- Index -->
+                    <div>
+                        <h3 class="section-title">Index</h3>
+                        <div class="chapters-list">
+                            <div class="chapter-item">
+                                <span class="chapter-number">1</span>
+                                <span class="chapter-title">Introduction</span>
+                            </div>
+                            <div class="chapter-item">
+                                <span class="chapter-number">2</span>
+                                <span class="chapter-title">Chapter 2</span>
+                            </div>
+                            <div class="chapter-item">
+                                <span class="chapter-number">3</span>
+                                <span class="chapter-title">Chapter 3</span>
+                            </div>
+                            <div class="chapter-item">
+                                <span class="chapter-number">4</span>
+                                <span class="chapter-title">Chapter 4</span>
+                            </div>
+                            <div class="chapter-item">
+                                <span class="chapter-number">5</span>
+                                <span class="chapter-title">Chapter 5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Beyond The Veil -->
+                    <div>
+                        <h3 class="section-title">Beyond The Veil</h3>
+                        <p class="beyond-veil-content">
+                            As a student of Comparative Religion, I have always been interested in learning about my faith Islam as much as I can about other faiths like Christianity, Judaism and others. As a result, I found myself discovering truths that had always been hidden from me concerning women's equality.
+                        </p>
+                        <button class="btn-primary">
+                            Read More
+                        </button>
+                        
+                        <div class="topics-section">
+                            <button class="topics-header" onclick="toggleTopics()">
+                                <h4 class="topics-title">
+                                    Topics that Discussed
+                                </h4>
+                                <svg class="chevron-icon" id="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            
+                            <div class="topics-content" id="topicsContent">
+                                <div class="topics-panel">
+                                    <ul class="topics-list">
+                                        <li class="topic-item">
+                                            <div class="topic-bullet"></div>
+                                            <span class="topic-text">Women's Status in Pre-Islamic Arabia</span>
+                                        </li>
+                                        <li class="topic-item">
+                                            <div class="topic-bullet"></div>
+                                            <span class="topic-text">The Quranic Perspective on Women</span>
+                                        </li>
+                                        <li class="topic-item">
+                                            <div class="topic-bullet"></div>
+                                            <span class="topic-text">Marriage and Family Rights</span>
+                                        </li>
+                                        <li class="topic-item">
+                                            <div class="topic-bullet"></div>
+                                            <span class="topic-text">Economic Rights and Independence</span>
+                                        </li>
+                                        <li class="topic-item">
+                                            <div class="topic-bullet"></div>
+                                            <span class="topic-text">Educational and Social Participation</span>
+                                        </li>
+                                        <li class="topic-item">
+                                            <div class="topic-bullet"></div>
+                                            <span class="topic-text">Legal Protection and Justice</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let isTopicsExpanded = false;
+
+        function toggleTopics() {
+            isTopicsExpanded = !isTopicsExpanded;
+            const topicsContent = document.getElementById('topicsContent');
+            const chevron = document.getElementById('chevron');
+            
+            if (isTopicsExpanded) {
+                topicsContent.classList.add('expanded');
+                chevron.classList.add('rotated');
+            } else {
+                topicsContent.classList.remove('expanded');
+                chevron.classList.remove('rotated');
+            }
+        }
+    </script>
+</body>
+</html>
