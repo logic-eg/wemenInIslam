@@ -59,35 +59,9 @@
 
         /* Header Styles */
         .header {
-            /*position: fixed;*/
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background-color: var(--background); /* Match section under header */
+            background-color: var(--background);
             backdrop-filter: blur(10px);
-            /* border-bottom: 1px solid var(--border);*/
-            opacity: 1;
-        }
-
-        .header.fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            opacity: 1;
-        }
-
-        .header,
-        .header.fixed {
-            transition: transform 1s cubic-bezier(.4,0,.2,1), opacity 1s cubic-bezier(.4,0,.2,1);
-        }
-
-        .header.hide {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
+            margin-top: 35px;
         }
 
         .header-content {
@@ -95,6 +69,7 @@
             align-items: center;
             justify-content: space-between;
             height: 4rem;
+            
         }
 
         .logo {
@@ -119,6 +94,10 @@
             color: var(--foreground);
             text-decoration: none;
             transition: color 0.2s;
+            font-family: 'EB Garamond', serif;
+            font-weight: 600;           /* SemiBold */
+            font-size: 16px;
+            letter-spacing: 0.015em;    /* 1.5% letter spacing */
         }
 
         .nav-link:hover {
