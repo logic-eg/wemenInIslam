@@ -147,3 +147,30 @@
                 isBookmarksOpen = false;
             }
         });
+
+        // Auto-hide header on scroll down, show on scroll up
+        let lastScroll = window.pageYOffset;
+        const header = document.querySelector('.header');
+        const headerHeight = header.offsetHeight;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > lastScroll && currentScroll > headerHeight) {
+                // Scrolling down, hide header and remove fixed position
+                header.classList.remove('fixed');
+                header.classList.remove('hide');
+            } else if (currentScroll < lastScroll && currentScroll > headerHeight) {
+                // Scrolling up, show header as fixed overlay, with animation
+                header.classList.add('fixed');
+                // Use a slight delay to allow the browser to apply position before removing .hide
+                setTimeout(() => {
+                    header.classList.remove('hide');
+                }, 10); // 10ms is enough
+            } else if (currentScroll <= headerHeight) {
+                // At top of page, header is part of normal flow
+                header.classList.remove('fixed');
+                header.classList.remove('hide');
+            }
+            lastScroll = currentScroll;
+        });

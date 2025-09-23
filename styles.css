@@ -59,14 +59,35 @@
 
         /* Header Styles */
         .header {
+            /*position: fixed;*/
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--background); /* Match section under header */
+            backdrop-filter: blur(10px);
+            /* border-bottom: 1px solid var(--border);*/
+            opacity: 1;
+        }
+
+        .header.fixed {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            opacity: 1;
+        }
+
+        .header,
+        .header.fixed {
+            transition: transform 1s cubic-bezier(.4,0,.2,1), opacity 1s cubic-bezier(.4,0,.2,1);
+        }
+
+        .header.hide {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .header-content {
